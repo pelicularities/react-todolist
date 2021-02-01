@@ -33,6 +33,7 @@ class TodoList extends Component {
       return (
         <div>
           <TodoItem
+            key={todo.id}
             name={todo.name}
             isDone={todo.isDone}
             setTodo={setTodo}
