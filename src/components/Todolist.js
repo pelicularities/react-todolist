@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TodoItem from "./TodoItem";
 
 class TodoList extends Component {
   constructor(props) {
@@ -14,8 +15,7 @@ class TodoList extends Component {
   displayTodos() {
     return this.state.todos.map((todo) => (
       <div>
-        <span>{todo.name}</span>
-        <span>{todo.isDone ? " - completed" : " - not completed"}</span>
+        <TodoItem name={todo.name} isDone={todo.isDone} />
       </div>
     ));
   }
@@ -25,6 +25,16 @@ class TodoList extends Component {
       <div>
         <div>Todolist</div>
         <div>{this.displayTodos()}</div>
+        <div>
+          Icons made by{" "}
+          <a href="https://www.alfredocreates.com" title="Alfredo Hernandez">
+            Alfredo Hernandez
+          </a>{" "}
+          from{" "}
+          <a href="https://www.flaticon.com/" title="Flaticon">
+            www.flaticon.com
+          </a>
+        </div>
       </div>
     );
   }
