@@ -1,23 +1,33 @@
 import React, { Component } from "react";
 import TodoItem from "./TodoItem";
+import { v4 as uuidv4 } from "uuid";
 
 class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       todos: [
-        { name: "Buy Milk", isDone: false },
-        { name: "Do push up", isDone: true },
+        { id: uuidv4(), name: "Buy Milk", isDone: false },
+        { id: uuidv4(), name: "Do push up", isDone: true },
       ],
     };
   }
 
   displayTodos() {
-    return this.state.todos.map((todo) => (
-      <div>
-        <TodoItem name={todo.name} isDone={todo.isDone} />
-      </div>
-    ));
+    return this.state.todos.map((todo) => {
+      const setTodo = (isDone) => {
+        const currentTodo = this.state.todos.filter(
+          (todoToFilter) => todoToFilter.id === todo.id
+        )[0];
+        currentTodo.isDone = isDone;
+        this.setState({ todos: [...this.state.todos] });
+      };
+      return (
+        <div>
+          <TodoItem name={todo.name} isDone={todo.isDone} setTodo={setTodo} />
+        </div>
+      );
+    });
   }
 
   render() {
