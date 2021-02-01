@@ -20,3 +20,11 @@
 .todo-item__name {
   margin-left: 5px;
 }
+
+.todo-item__delete {
+  margin-left: 8px;
+}
+
+.todo-item__delete:hover {
+  cursor: pointer;
+}

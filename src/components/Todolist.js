@@ -22,9 +22,21 @@ class TodoList extends Component {
         currentTodo.isDone = isDone;
         this.setState({ todos: [...this.state.todos] });
       };
+
+      const deleteTodo = () => {
+        const todosWithoutItem = this.state.todos.filter(
+          (todoToFilter) => todoToFilter.id !== todo.id
+        );
+        this.setState({ todos: [...todosWithoutItem] });
+      };
       return (
         <div>
-          <TodoItem name={todo.name} isDone={todo.isDone} setTodo={setTodo} />
+          <TodoItem
+            name={todo.name}
+            isDone={todo.isDone}
+            setTodo={setTodo}
+            deleteTodo={deleteTodo}
+          />
         </div>
       );
     });
