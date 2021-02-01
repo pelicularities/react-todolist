@@ -10,6 +10,7 @@ class TodoList extends Component {
         { id: uuidv4(), name: "Buy Milk", isDone: false },
         { id: uuidv4(), name: "Do push up", isDone: true },
       ],
+      newItemName: "",
     };
   }
 
@@ -42,11 +43,41 @@ class TodoList extends Component {
     });
   }
 
+  handleChange = (event) => {
+    this.setState({ newItemName: event.target.value });
+  };
+
+  addNewTodo() {
+    const { newItemName: name } = this.state;
+    if (!name || !name.length) return;
+
+    this.setState({
+      newItemName: "",
+      todos: [
+        ...this.state.todos,
+        {
+          id: uuidv4(),
+          name: name,
+          isDone: false,
+        },
+      ],
+    });
+  }
+
   render() {
     return (
       <div>
         <div>Todolist</div>
         <div>{this.displayTodos()}</div>
+        <div>
+          <input
+            type="text"
+            value={this.state.newItemName}
+            onChange={this.handleChange}
+            placeholder="Take a break"
+          />
+          <button onClick={() => this.addNewTodo()}>add</button>
+        </div>
         <div>
           Icons made by{" "}
           <a href="https://www.alfredocreates.com" title="Alfredo Hernandez">
