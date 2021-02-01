@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TodoItem from "./TodoItem";
 import { v4 as uuidv4 } from "uuid";
+import "../stylesheets/TodoList.scss";
 
 class TodoList extends Component {
   constructor(props) {
@@ -75,8 +76,7 @@ class TodoList extends Component {
   render() {
     return (
       <div id="todo-list" data-testid="todo-list">
-        <div>{this.props.title || "nameless to-do list"}</div>
-        <div>{this.displayTodos()}</div>
+        <h1>{this.props.title || "nameless to-do list"}</h1>
         <div>
           <input
             type="text"
@@ -86,6 +86,7 @@ class TodoList extends Component {
           />
           <button onClick={() => this.addNewTodo()}>add</button>
         </div>
+        <div className="item-container">{this.displayTodos()}</div>
         <div>
           Icons made by{" "}
           <a href="https://www.alfredocreates.com" title="Alfredo Hernandez">
