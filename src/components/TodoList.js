@@ -40,15 +40,13 @@ class TodoList extends Component {
       const setTodo = this.createSetTodo(todo);
       const deleteTodo = this.createDeleteTodo(todo);
       return (
-        <div>
-          <TodoItem
-            key={todo.id}
-            name={todo.name}
-            isDone={todo.isDone}
-            setTodo={setTodo}
-            deleteTodo={deleteTodo}
-          />
-        </div>
+        <TodoItem
+          key={todo.id}
+          name={todo.name}
+          isDone={todo.isDone}
+          setTodo={setTodo}
+          deleteTodo={deleteTodo}
+        />
       );
     });
   }
@@ -76,8 +74,8 @@ class TodoList extends Component {
 
   render() {
     return (
-      <div>
-        <div>Todolist</div>
+      <div id="todo-list" data-testid="todo-list">
+        <div>{this.props.title || "nameless to-do list"}</div>
         <div>{this.displayTodos()}</div>
         <div>
           <input

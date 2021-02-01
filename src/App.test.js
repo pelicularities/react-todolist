@@ -3,6 +3,6 @@ import App from "./App";
 
 test("renders TodoList component", () => {
   render(<App />);
-  const todoList = screen.getByText("Todolist");
+  const todoList = screen.getByTestId("todo-list");
   expect(todoList).toBeInTheDocument();
 });
