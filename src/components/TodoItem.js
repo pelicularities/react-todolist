@@ -1,8 +1,9 @@
 import React from "react";
+import "../stylesheets/TodoItem.scss";
 
 const TodoItem = ({ name, isDone }) => (
-  <div>
-    <span>
+  <div className="todo-item">
+    <span className="todo-item__completed">
       {isDone && (
         <img
           height="16"
@@ -11,7 +12,7 @@ const TodoItem = ({ name, isDone }) => (
         />
       )}
     </span>
-    <span>{name}</span>
+    <span className="todo-item__name">{name}</span>
   </div>
 );
 
