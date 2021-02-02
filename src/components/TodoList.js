@@ -75,7 +75,7 @@ class TodoList extends Component {
 
   render() {
     return (
-      <div id="todo-list" data-testid="todo-list">
+      <div className="todo-list" data-testid="todo-list">
         <h1>{this.props.title || "nameless to-do list"}</h1>
         <div>
           <input
@@ -87,16 +87,6 @@ class TodoList extends Component {
           <button onClick={() => this.addNewTodo()}>add</button>
         </div>
         <div className="item-container">{this.displayTodos()}</div>
-        <div>
-          Icons made by{" "}
-          <a href="https://www.alfredocreates.com" title="Alfredo Hernandez">
-            Alfredo Hernandez
-          </a>{" "}
-          from{" "}
-          <a href="https://www.flaticon.com/" title="Flaticon">
-            www.flaticon.com
-          </a>
-        </div>
       </div>
     );
   }
