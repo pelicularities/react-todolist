@@ -14,7 +14,7 @@ describe("TodoList", () => {
   });
 
   it("should not add a todo item if item name is blank", () => {
-    const { queryByText } = render(<TodoList />);
+    render(<TodoList />);
     const todoItemsBefore = screen.getAllByTestId("checkbox").length;
     const newTodoItemInput = screen.getByTestId("newTodoItemInput");
     fireEvent.change(newTodoItemInput, { target: { value: "" } });
