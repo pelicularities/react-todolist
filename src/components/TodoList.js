@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TodoItem from "./TodoItem";
 import { v4 as uuidv4 } from "uuid";
-import "../stylesheets/TodoList.scss";
+import { Row, Col, Button, FormControl, InputGroup } from "react-bootstrap";
 
 function TodoList({ title }) {
   const [todos, setTodos] = useState([
@@ -52,20 +52,26 @@ function TodoList({ title }) {
   };
 
   return (
-    <div className="todo-list" aria-label="todo-list">
-      <h1>{title || "nameless to-do list"}</h1>
-      <div>
-        <input
-          data-testid="newTodoItemInput"
-          type="text"
-          value={newItemName}
-          onChange={(e) => setNewItemName(e.target.value)}
-          placeholder="Take a break"
-        />
-        <button onClick={() => addNewTodo()}>add</button>
-      </div>
-      <div className="item-container">{displayTodos()}</div>
-    </div>
+    <Row className="border-bottom mb-3" aria-label="todo-list">
+      <Col>
+        <h1>{title || "nameless to-do list"}</h1>
+        <InputGroup>
+          <FormControl
+            type="text"
+            value={newItemName}
+            onChange={(e) => setNewItemName(e.target.value)}
+            placeholder="Take a break"
+          />
+          <InputGroup.Append>
+            <Button variant="primary" onClick={() => addNewTodo()}>
+              add
+            </Button>
+          </InputGroup.Append>
+        </InputGroup>
+
+        <div className="border rounded p-3 my-3">{displayTodos()}</div>
+      </Col>
+    </Row>
   );
 }
 
