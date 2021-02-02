@@ -16,7 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "coverage": "react-scripts test --coverage --watchAll=false"
   },
   "eslintConfig": {
     "extends": [
@@ -38,5 +39,11 @@
   },
   "devDependencies": {
     "sass": "^1.32.5"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "./src/reportWebVitals.js",
+      "./src/index.js"
+    ]
   }
 }

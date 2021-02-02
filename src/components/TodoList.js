@@ -52,7 +52,7 @@ function TodoList({ title }) {
   };
 
   return (
-    <div className="todo-list" data-testid="todo-list">
+    <div className="todo-list" aria-label="todo-list">
       <h1>{title || "nameless to-do list"}</h1>
       <div>
         <input

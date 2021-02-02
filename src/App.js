@@ -27,6 +27,7 @@ function App() {
     <div className="App">
       <div>
         <input
+          data-testId="newTodoListInput"
           type="text"
           value={newListName}
           onChange={(e) => setNewListName(e.target.value)}
