@@ -36,7 +36,8 @@ function TodoList({ title }) {
     });
   };
 
-  const addNewTodo = () => {
+  const addNewTodo = (e) => {
+    e.preventDefault();
     if (!newItemName || !newItemName.length) return;
 
     setTodos([
@@ -55,19 +56,21 @@ function TodoList({ title }) {
     <Row className="border-bottom mb-3" aria-label="todo-list">
       <Col>
         <h1>{title || "nameless to-do list"}</h1>
-        <InputGroup>
-          <FormControl
-            type="text"
-            value={newItemName}
-            onChange={(e) => setNewItemName(e.target.value)}
-            placeholder="Take a break"
-          />
-          <InputGroup.Append>
-            <Button variant="primary" onClick={() => addNewTodo()}>
-              add
-            </Button>
-          </InputGroup.Append>
-        </InputGroup>
+        <form onSubmit={(e) => addNewTodo(e)}>
+          <InputGroup>
+            <FormControl
+              type="text"
+              value={newItemName}
+              onChange={(e) => setNewItemName(e.target.value)}
+              placeholder="Take a break"
+            />
+            <InputGroup.Append>
+              <Button variant="primary" onClick={(e) => addNewTodo(e)}>
+                add
+              </Button>
+            </InputGroup.Append>
+          </InputGroup>
+        </form>
 
         <div className="border rounded p-3 my-3">{displayTodos()}</div>
       </Col>
