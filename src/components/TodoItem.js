@@ -3,7 +3,11 @@ import "../stylesheets/TodoItem.scss";
 
 const TodoItem = ({ name, isDone, setTodo, deleteTodo }) => (
   <div className="todo-item">
-    <span className="todo-item__completed" onClick={() => setTodo(!isDone)}>
+    <span
+      data-testid="checkbox"
+      className="todo-item__completed"
+      onClick={() => setTodo(!isDone)}
+    >
       {isDone && (
         <img
           height="16"
@@ -14,7 +18,11 @@ const TodoItem = ({ name, isDone, setTodo, deleteTodo }) => (
     </span>
     <span className="todo-item__name">{name}</span>
     <span onClick={() => deleteTodo()} className="todo-item__delete">
-      <img height="16" alt="done" src={`${process.env.PUBLIC_URL}/cross.png`} />
+      <img
+        height="16"
+        alt="delete"
+        src={`${process.env.PUBLIC_URL}/cross.png`}
+      />
     </span>
   </div>
 );

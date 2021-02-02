@@ -56,6 +56,7 @@ function TodoList({ title }) {
       <h1>{title || "nameless to-do list"}</h1>
       <div>
         <input
+          data-testid="newTodoItemInput"
           type="text"
           value={newItemName}
           onChange={(e) => setNewItemName(e.target.value)}
