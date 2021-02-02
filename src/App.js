@@ -12,7 +12,8 @@ function App() {
     },
   ]);
 
-  const addNewList = () => {
+  const addNewList = (e) => {
+    e.preventDefault();
     setTodoLists([
       ...todoLists,
       {
@@ -25,15 +26,25 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <input
-          type="text"
-          value={newListName}
-          onChange={(e) => setNewListName(e.target.value)}
-          placeholder="new todo-list name"
-        />
-        <button onClick={() => addNewList()}>create new list</button>
-      </div>
+      <Row className="mb-3">
+        <Col>
+          <form onSubmit={(e) => addNewList(e)}>
+            <InputGroup>
+              <FormControl
+                type="text"
+                value={newListName}
+                onChange={(e) => setNewListName(e.target.value)}
+                placeholder="new todo-list name"
+              />
+              <InputGroup.Append>
+                <Button variant="primary" onClick={(e) => addNewList(e)}>
+                  create new list
+                </Button>
+              </InputGroup.Append>
+            </InputGroup>
+          </form>
+        </Col>
+      </Row>
       {todoLists.map((todoList) => (
         <TodoList key={todoList.id} title={todoList.title} />
       ))}
