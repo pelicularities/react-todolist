@@ -5,6 +5,8 @@ const TodoItem = ({ name, isDone, setTodo, deleteTodo }) => (
   <div className="todo-item">
     <span
       data-testid="checkbox"
+      role="checkbox"
+      aria-checked={isDone}
       className="todo-item__completed"
       onClick={() => setTodo(!isDone)}
     >

@@ -4,7 +4,7 @@ import TodoList from "./TodoList";
 describe("TodoList", () => {
   it("should allow user to add a todo item", () => {
     const { getByText } = render(<TodoList />);
-    const newTodoItemInput = screen.getByTestId("newTodoItemInput");
+    const newTodoItemInput = screen.getByPlaceholderText("Take a break");
     const newItemName = "Take a nap";
     fireEvent.change(newTodoItemInput, { target: { value: newItemName } });
     const createNewItemBtn = screen.getByText("add");
@@ -15,18 +15,18 @@ describe("TodoList", () => {
 
   it("should not add a todo item if item name is blank", () => {
     render(<TodoList />);
-    const todoItemsBefore = screen.getAllByTestId("checkbox").length;
-    const newTodoItemInput = screen.getByTestId("newTodoItemInput");
+    const todoItemsBefore = screen.getAllByRole("checkbox").length;
+    const newTodoItemInput = screen.getByPlaceholderText("Take a break");
     fireEvent.change(newTodoItemInput, { target: { value: "" } });
     const createNewItemBtn = screen.getByText("add");
     fireEvent.click(createNewItemBtn);
-    const todoItemsAfter = screen.getAllByTestId("checkbox").length;
+    const todoItemsAfter = screen.getAllByRole("checkbox").length;
     expect(todoItemsBefore).toEqual(todoItemsAfter);
   });
 
   it("should allow user to change status of a todo item", () => {
     render(<TodoList />);
-    const checkboxes = screen.getAllByTestId("checkbox");
+    const checkboxes = screen.getAllByRole("checkbox");
     fireEvent.click(checkboxes[0]);
     // there should be two checks on the screen after the above event
     let checks = screen.getAllByAltText("done");
